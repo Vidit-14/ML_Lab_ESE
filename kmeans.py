@@ -72,7 +72,7 @@ test = pd.DataFrame({
     'feature2': [40]
 })
 
-test_scaled = scaler.fit_transform(test)
+test_scaled = scaler.transform(test)
 pred = model.predict(test_scaled)
 print("\nPredicted Cluster:", pred[0])
 

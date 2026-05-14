@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
@@ -32,6 +33,19 @@ rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print("intercept", model.intercept_)
 print("slope:", model.coef_)
 print("RMSE:", rmse)
+
+# -------- SIMPLE PLOT --------
+
+plt.scatter(X_test, y_test, label="Actual Values")
+plt.plot(X_test, y_pred, label="Regression Line")
+
+plt.xlabel("X")
+plt.ylabel("y")
+plt.title("Simple Linear Regression")
+plt.legend()
+
+plt.show()
+
 
 while True:
     try:

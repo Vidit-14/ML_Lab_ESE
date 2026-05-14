@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import*
+import matplotlib.pyplot as plt
 
 df = pd.DataFrame({
     'Age':['Young','Young','Middle','Old','Old','Old','Middle','Young','Young','Old'],
@@ -40,6 +41,20 @@ print("\nConfusion Matrix:\n", confusion_matrix(y_test, pred))
 print("\nPrecision:", precision_score(y_test, pred))
 print("\nRecall:", recall_score(y_test, pred))
 print("\nF1 Score:", f1_score(y_test, pred))
+
+# -------- DECISION TREE PLOT --------
+
+plt.figure(figsize=(10,6))
+
+plot_tree(
+    model,
+    feature_names=X.columns,
+    class_names=["No", "Yes"],
+    filled=True
+)
+
+plt.title("Decision Tree Classifier")
+plt.show()
 
 # Test prediction
 test = [[1, 1, 1, 0]]   # Young, Medium, Yes, Excellent

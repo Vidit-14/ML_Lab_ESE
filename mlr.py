@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
 
 np.random.seed(42)
 
@@ -61,6 +62,26 @@ rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print("Coefficients:", model.coef_)
 print("Intercept:", model.intercept_)
 print("RMSE:", rmse)
+
+# -------- SIMPLE PLOT --------
+
+plt.figure(figsize=(8,6))
+
+plt.scatter(y_test, y_pred, label="Predicted vs Actual")
+
+# Perfect prediction line
+plt.plot(
+    [y_test.min(), y_test.max()],
+    [y_test.min(), y_test.max()],
+    label="Ideal Line"
+)
+
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Multiple Linear Regression")
+plt.legend()
+
+plt.show()
 
 test_data = pd.DataFrame([{
     'MedInc': 5.0,
